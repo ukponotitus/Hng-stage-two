@@ -1,12 +1,30 @@
-import { StaticImageData } from "next/image";
+// import { StaticImageData } from "next/image";
 export interface IFeaturedMovie {
-    img: string;
-    date: string;
-    title: string;
-    // imdp:string,
-    // rate:string,
-    // apple:string,
-    // percent:string,
+  onClick(props: IFeaturedMovie): unknown;
+  poster_path: string;
+  release_date: string;
+  title: string;
     description:string,
     id: number;
   }
+
+  export interface singleMovieData{
+        Home: string,
+        Movies: string,
+        Tvseries: string,
+        upcoming: string,
+        descriptionTitle:string,
+        description:string,
+        logout:string,
+        id:number,
+  }
+  export interface IMissing{
+    description: string,
+  }
+  export interface IFeaturedSingleMovie {
+    poster_path: string;
+    release_date: string;
+    title: string;
+      description:string,
+      id: number;
+    }

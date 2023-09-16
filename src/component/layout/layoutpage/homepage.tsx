@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, Stack, Typography } from "@mui/material";
 import SearchAppBar from "../layout/appbar";
 import Header from "../../../images/Header.png"
 import Image from "next/image";
@@ -8,8 +8,35 @@ import {AiFillPlayCircle} from "react-icons/ai"
 import FeaturedMovie from "@/component/common/moviecard/movies";
 import cardMovie from "@/data";
 import FooterPage from "../layout/footer";
+import {MdOutlineKeyboardArrowRight} from "react-icons/md"
+import { authenticate } from "@/pages/services/apis/config";
+import { useEffect, useState } from "react";
+import { IFeaturedMovie } from "@/lib/interface/featuredmovie";
+import React from "react";
+import SingleItemDisplay from "@/pages/singlepage";
+import singlepage from "@/pages/singlepage";
+// import data from "@/data";
+
+
 
 export default function HomeLayoutPage(){
+  // const [selectedItem, setSelectedItem] = useState<IFeaturedMovie>()
+  const [data, setData] = React.useState<IFeaturedMovie[]>([]); 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const responseData: IFeaturedMovie[] = await authenticate();
+        console.log(responseData );
+        setData(responseData)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+  // const [movies, setMovieDB] = useState([]);
+  
     return(
         <>
         <Box sx={{ backgroundColor:"white"}}>
@@ -88,33 +115,59 @@ export default function HomeLayoutPage(){
           </Box>
         </Box>
         <Box sx={{ml:{md:"98px", xs:""},}}>
-        <Box>
-        <Typography sx={{mt:"70px", mb:"30px", color:"#000", fontSize:"36px", fontWeight:"700"}}>FeaturedMovies</Typography>
-        </Box>
+        <Stack 
+        direction={{md:"row", xs:"column"}} 
+        justifyContent="space-between" 
+        sx={{mt:"70px", 
+        mb:"30px",
+        textAlign:"center"
+        }}>
+        <Typography 
+        sx={{ 
+        color:"#000", fontSize:"36px", 
+        fontWeight:"700"}}>FeaturedMovies</Typography>
+        {/* <Link href="/singlepage"> */}
+        <Button  sx={{color:"#BE123C", 
+        fontSize:"18px",
+         textTransform:"none", 
+         pr:"65px"}}>
+          See more <MdOutlineKeyboardArrowRight /></Button>
+        {/* </Link> */}
+        </Stack>
         <Grid
                   container
                   rowSpacing={7}
                   columnSpacing={5}
                   // mt="2px"
-                  // padding="0px"
+                  pr={{md:"40px", xs:"0px"}}
                   // sx={{mt:"10px"}}
                 >
                   
             {
-               cardMovie.map((item)=>(
-                <Grid
+               data?.results?.slice(0, 10)?.map((item: IFeaturedMovie)=>(
+                 <Grid
                       height="100%"
-                      key={item.title}
+                      key={item.id}
                       item
                       xs={12}
                       sm={6}
                       md={3}
                     >
-                      <FeaturedMovie key={item.title} {...item} />
+                 
+                    <Link href={`movies/${item.id}`}
+                      key={item.id}
+                  >
+                      <FeaturedMovie
+                       key={item.id} 
+                       {...item}
+                      //  onClick={() => handleItemClick(item)}
+                        />
+                    </Link>
                     </Grid>
 
                )) 
             }
+            {/* <SingleItemDisplay selectedItem={selectedItem}  /> */}
 
                 </Grid>
         </Box>

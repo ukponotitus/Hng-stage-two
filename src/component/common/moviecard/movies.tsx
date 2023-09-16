@@ -1,5 +1,5 @@
 import cardMovie from "@/data"
-import { IFeaturedMovie } from "@/lib/interface/featuredmovie";
+import { IFeaturedMovie, IMissing } from "@/lib/interface/featuredmovie";
 import {
     Box,
     Chip,
@@ -12,11 +12,72 @@ import {
     Button,
   } from "@mui/material";
   import Image from "next/image";
-  import { StaticImageData } from "next/image";
+  // import { StaticImageData } from "next/image";
   import IMDP from "../../../images/IMDP.png"
 import Apple from "../../../images/Apple.png"
+import { authenticate } from "@/pages/services/apis/config";
+import { useEffect } from "react";
+import Router, { useRouter } from "next/router";
+
+
+
+interface LinlImage{
+  src:string;
+  alt:string;
+  width?: number; 
+  height?: number;
+  objectFit?:string;
+  // fill?:string;
+
+}
+const Missing:IMissing[]=[
+  {
+    description:"Action, Adventure, Horror"
+  },
+  {
+    description:"Action, Adventure"
+  },
+  {
+    description:"Animation, Action, Adventure"
+  },
+  {
+    description:"Action, Drama, History"
+  },
+  {
+    description:"Action, Adventure, Drama"
+  },
+  {
+    description:"Action, Adventure, Drama"
+  },
+  {
+    description:"Action, Adventure, Fantasy"
+  },
+  {
+    description:"Action, Drama, Horror "
+  },
+  {
+    description:"Action, Adventure, Horror"
+  },
+  {
+    description:"Action, Drama, Horror "
+  },  
+
+  ]
+
+export function SingleImage({ src, alt, ...rest }: LinlImage) {
+  if (src.startsWith('http') || src.startsWith('https')) {
+    return <img src={src} alt={alt} {...rest} />;
+  }
+  return <Image src={src} alt={alt} {...rest} />;
+}
 
 export default function FeaturedMovie(props:IFeaturedMovie){
+  // const router = useRouter()
+  // const handleClick = () => {
+  //   props.onClick(props);
+  //   router.push("/singlepage")
+  // };
+
     return(
         <>
       <Card
@@ -25,20 +86,24 @@ export default function FeaturedMovie(props:IFeaturedMovie){
           background: "#FFFFF",
           width:{md:"250px", xs:"100%"},
           height:"490px",
+          boxShadow:"none",
+          border:"solid red"
         }}
       >
         <Box
-          // boxShadow="0px 14.633px 29.2659px rgba(0, 0, 0, 0.059)"
           height={"100%"}
         >
-          <Box height="330px"  position="relative" width={{md:"250px", xs:"100%"}}>
-            <Box height="220px">
-            <Image
-              src={props.img}
-              fill={true}
-                alt="movie"
+          <Box height="330px"  position="relative" width={{md:"150px", xs:"100%"}}>
+            <Box height="120px">
+            <SingleImage
+                src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`}
+                alt={props.title}
                 data-testid="movie-poster"
-            />
+                width={400}
+                height={300}
+                objectFit= 'cover'
+                // fill="true"
+              />
             </Box>
             </Box>
             <Stack sx={{mt:"12px"}}>
@@ -48,7 +113,7 @@ export default function FeaturedMovie(props:IFeaturedMovie){
                 sx={{color: "var(--gray-400, #9CA3AF)", 
                 fontSize:"12px",
                  fontWieght:"700"}}>
-                  {props.date}</Typography>
+                  {props. release_date}</Typography>
                 <Typography
                 data-testid="movie-title"
                  sx={{
@@ -94,8 +159,10 @@ export default function FeaturedMovie(props:IFeaturedMovie){
               </Box>
             </Box>
                 <Box>
-                    <Typography sx={{color: "var(--gray-400, #9CA3AF)",
-                 fontSize:"12px", fontWieght:"700", mt:"12px"}}>{props.description}</Typography>
+                    <Typography
+                    data-testid="movie-poster"
+                     sx={{color: "var(--gray-400, #9CA3AF)",
+                 fontSize:"12px", fontWieght:"700", mt:"10px"}}>{props.description ||  (Missing[0] ? Missing[0].description : '')}</Typography>
                 </Box>
             </Stack>
           </Box>
