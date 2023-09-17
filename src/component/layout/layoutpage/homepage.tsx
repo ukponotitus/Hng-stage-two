@@ -84,6 +84,8 @@ export default function HomeLayoutPage(){
                 // textAlign: "center",
               }}
             >
+
+              
              John Wick is on the run after killing a member of the
               international assassins' guild, and with a
               $14 million price tag on his head, he is the
