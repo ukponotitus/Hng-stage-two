@@ -23,6 +23,7 @@ export default function HomeLayoutPage(){
       try {
         const responseData: IFeaturedMovie[] = await authenticate();
         console.log(responseData );
+        return responseData;
         setData(responseData)
       } catch (error) {
         console.error(error);
@@ -139,7 +140,7 @@ export default function HomeLayoutPage(){
                 >
                   
             {
-               data?.results?.slice(0, 10)?.map((item: IFeaturedMovie)=>(
+               data.results?.slice(0, 10)?.map((item: IFeaturedMovie)=>(
                  <Grid
                       height="100%"
                       key={item.id}
