@@ -35,8 +35,8 @@ import tv from '../../../images/tv.png'
 import { MdExpandMore } from "react-icons/md";
 import Rating from '@mui/material/Rating';
 import { AiFillStar } from "react-icons/ai";
-import {GiBlackBook} from "react-icons/gi"
-import single from "../../../images/single.png"
+import {GiBlackBook} from 'react-icons/gi';
+import single from "../../../images/single.png";
 // import { Stack } from "@mui/material";
 
 
@@ -85,7 +85,6 @@ export default function Movie(props) {
         console.error("Error:", e);
       }
     }
-
     if (movie_id) {
       getMovie();
     }
