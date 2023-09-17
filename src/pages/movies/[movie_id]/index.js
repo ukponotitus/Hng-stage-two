@@ -58,6 +58,7 @@ export function SingleImage({ src, alt, ...rest }) {
   return <Image src={src} alt={alt} {...rest} />;
 }
 export default function Movie(props) {
+  const theme = useTheme();
   const router = useRouter();
   const { movie_id } = router.query;
   const [movie, setMovie] = useState(null);
@@ -93,7 +94,6 @@ export default function Movie(props) {
   if (!movie) {
     return <h1>Loading....</h1>;
   }
-  const theme = useTheme();
   const buttonStyle = {
     padding: "10px 20px",
     color: "white",

@@ -14,8 +14,6 @@ import { useEffect, useState } from "react";
 import { IFeaturedMovie } from "@/lib/interface/featuredmovie";
 import React from "react";
 
-
-
 export default function HomeLayoutPage(){
   const [data, setData] = React.useState<IFeaturedMovie[]>([]); 
   console.log(data)
