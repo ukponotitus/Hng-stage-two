@@ -27,7 +27,6 @@ interface LinlImage{
   width?: number; 
   height?: number;
   objectFit?:string;
-  // fill?:string;
 
 }
 const Missing:IMissing[]=[
@@ -72,11 +71,7 @@ export function SingleImage({ src, alt, ...rest }: LinlImage) {
 }
 
 export default function FeaturedMovie(props:IFeaturedMovie){
-  // const router = useRouter()
-  // const handleClick = () => {
-  //   props.onClick(props);
-  //   router.push("/singlepage")
-  // };
+
 
     return(
         <>
@@ -102,7 +97,6 @@ export default function FeaturedMovie(props:IFeaturedMovie){
                 width={400}
                 height={300}
                 objectFit= 'cover'
-                // fill="true"
               />
             </Box>
             </Box>
@@ -144,7 +138,6 @@ export default function FeaturedMovie(props:IFeaturedMovie){
                 width: "40px",
                 bottom: 5,
                 ml: "5px",
-                // backgroundColor: "#BD000D",
                 alignItems: "center",
                 height: "20px",
               }}
@@ -155,7 +148,6 @@ export default function FeaturedMovie(props:IFeaturedMovie){
                   mt: "3px",
                 }}
               >
-                {/* <GiRoyalLove /> */}
               </Box>
             </Box>
                 <Box>
@@ -166,7 +158,6 @@ export default function FeaturedMovie(props:IFeaturedMovie){
                 </Box>
             </Stack>
           </Box>
-        {/* </Box> */}
       </Card>
     </>
     )

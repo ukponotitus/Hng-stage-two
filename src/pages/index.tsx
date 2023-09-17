@@ -20,7 +20,6 @@ export default function Home() {
       <main >
         <Box>
           <HomeLayoutPage />
-          {/* <Home */}
         </Box>
       </main>
     </>

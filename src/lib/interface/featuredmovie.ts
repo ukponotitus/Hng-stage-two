@@ -6,6 +6,7 @@ export interface IFeaturedMovie {
   title: string;
     description:string,
     id: number;
+    results:string;
   }
 
   export interface singleMovieData{

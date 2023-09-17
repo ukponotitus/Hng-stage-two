@@ -97,8 +97,8 @@ export default function SearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Home</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Movies</MenuItem>
     </Menu>
   );
 
@@ -125,7 +125,7 @@ export default function SearchAppBar() {
             {/* <MailIcon /> */}
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Home</p>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -137,7 +137,7 @@ export default function SearchAppBar() {
             {/* <NotificationsIcon /> */}
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Movies</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -200,7 +200,11 @@ export default function SearchAppBar() {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-              sx={{mx:"25px", background:"#BE123C",
+              sx={{mx:"25px", 
+              background:"#BE123C",
+              ".hover":{
+                background:"#BE123C",
+              },
               width: "36px",
               height: "36px"}}
             >

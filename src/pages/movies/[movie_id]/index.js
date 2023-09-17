@@ -70,7 +70,6 @@ export default function Movie(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   
 
   const movieUrl = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}`;
@@ -96,7 +95,6 @@ export default function Movie(props) {
   }
   const theme = useTheme();
   const buttonStyle = {
-    // backgroundColor: color,
     padding: "10px 20px",
     color: "white",
     border: "none",
@@ -109,7 +107,6 @@ export default function Movie(props) {
       >
        <Toolbar>
           <IconButton
-            // color="#BE123C"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -252,7 +249,7 @@ export default function Movie(props) {
       </Drawer>
 
         <Box 
-        sx={{ml:{md:"15%", xs:"10%"}, mt:"px", backgroundColor:"white"}}
+        sx={{ml:{md:"15%", xs:"%"}, mt:"px", backgroundColor:"white"}}
           data_testid="movie_info_wrapper"
           
           keys={movie.id}
@@ -263,6 +260,7 @@ export default function Movie(props) {
               alt="movie poster"
               width={1200}
               height={500}
+
               data_testid="poster"
             />
           </Suspense>
@@ -273,7 +271,7 @@ export default function Movie(props) {
           >
             <Grid container spacing={2}> 
             <Grid item md={8}>
-              <Stack direction="row" 
+              <Stack direction={{md:"row", xs:"column"}} 
               justifyContent="space-between" 
               data-testid="movie-brief" 
               mt="15px"
@@ -281,39 +279,38 @@ export default function Movie(props) {
                   <Box>
                 <Typography
                   data-testid="movie-title"
-                  sx={{fontSize:"23px", fontWeight:"400", color:"#404040"}}>
+                  sx={{fontSize:{md:"23px", xs:"18px"}, fontWeight:"400", color:"#404040"}}>
                   {movie.title}
                 </Typography>
                   </Box>
                   <Box>
                 <Typography data-testid="dot"
-                sx={{fontSize:"23px", fontWeight:"400", color:"#404040"}}>
+                sx={{fontSize:{md:"23px", xs:"18px"}, fontWeight:"400", color:"#404040"}}>
                   .
                 </Typography>
                   </Box>
                   <Box>
                 <Typography
                   data-testid="movie-release-date"
-                  sx={{fontSize:"23px", fontWeight:"400", color:"#404040"}}
+                  sx={{fontSize:{md:"23px", xs:"18px"}, fontWeight:"400", color:"#404040"}}
                 >
                   {new Date(movie.release_date).getUTCFullYear()}
                 </Typography>
                   </Box>
                   <Box>
                 <Typography data-testid="dot"
-                sx={{fontSize:"23px", fontWeight:"400", color:"#404040"}}>
+                sx={{fontSize:{md:"23px", xs:"18px"}, fontWeight:"400", color:"#404040"}}>
                   .
                 </Typography>
                   </Box>
                   <Box>
                 <Typography
                   data-testid="movie-runtime"
-                  sx={{fontSize:"23px", fontWeight:"400", color:"#404040"}}
+                  sx={{fontSize:{md:"23px", xs:"18px"}, fontWeight:"400", color:"#404040"}}
                 >
                   {movie.runtime}min
                 </Typography>                  
                   </Box>
-                {/* </Box> */}
 
 
                 <Box data_testid="action" mt="5px">
@@ -327,12 +324,14 @@ export default function Movie(props) {
             <div data-testid="box1_right" >
               <Box
                 data_testid="movie_overview"
+                width={{md:"100%", xs:"50%"}}
               >
-                <Typography sx={{fontSize:"18px", fontWeight:"400", color:"#333333", mt:"15px"}}>
+                <Typography sx={{fontSize:{md:"18px", xs:"16px"}, fontWeight:"400", color:"#333333", mt:"15px"}}>
                 {movie.overview}
                 </Typography>
               </Box>
-              <Box data_testid="movie_team" mt="15px">
+              <Box data_testid="movie_team" mt="15px"
+              width={{md:"100%", xs:"50%"}}>
                 <Typography sx={{mt:"20px"}}>
                   Director: <span style={{color:"#BE123C", fontSize:"20px", fontWeight:"400",}}>Joseph Kosinski</span>{" "}
                 </Typography>
@@ -345,8 +344,8 @@ export default function Movie(props) {
                 </Typography>
               </Box>
 
-              <Stack  direction="row"  data-testid="top_rated" 
-              sx={{border:"1px solid #C7C7C7", mt:"20px"}}>
+              <Stack  direction={{md:"row", xs:"column"}}  data-testid="top_rated" 
+              sx={{border:"1px solid #C7C7C7", mt:"20px", mx:"px"}}>
                 <Box
                 sx={{
                   background:"#BE123C",

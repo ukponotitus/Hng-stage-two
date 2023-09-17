@@ -2,9 +2,6 @@ import React from "react";
 import { singleMovieData } from "./lib/interface/featuredmovie";
 import { ReactElement, ReactNode } from "react";
 
-// const Missing:IMissing={
-//     IMissing:""
-// }
 const SingleMovieData: singleMovieData[]=[{
     Home: "Home",
     Movies: "Movies",

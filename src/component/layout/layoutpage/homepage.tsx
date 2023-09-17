@@ -13,14 +13,10 @@ import { authenticate } from "@/pages/services/apis/config";
 import { useEffect, useState } from "react";
 import { IFeaturedMovie } from "@/lib/interface/featuredmovie";
 import React from "react";
-import SingleItemDisplay from "@/pages/singlepage";
-import singlepage from "@/pages/singlepage";
-// import data from "@/data";
 
 
 
 export default function HomeLayoutPage(){
-  // const [selectedItem, setSelectedItem] = useState<IFeaturedMovie>()
   const [data, setData] = React.useState<IFeaturedMovie[]>([]); 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +31,6 @@ export default function HomeLayoutPage(){
 
     fetchData();
   }, []);
-  // const [movies, setMovieDB] = useState([]);
   
     return(
         <>
@@ -167,7 +162,6 @@ export default function HomeLayoutPage(){
 
                )) 
             }
-            {/* <SingleItemDisplay selectedItem={selectedItem}  /> */}
 
                 </Grid>
         </Box>
