@@ -18,13 +18,14 @@ import React from "react";
 
 export default function HomeLayoutPage(){
   const [data, setData] = React.useState<IFeaturedMovie[]>([]); 
+  console.log(data)
   useEffect(() => {
     async function fetchData() {
       try {
         const responseData: IFeaturedMovie[] = await authenticate();
         console.log(responseData );
-        return responseData;
         setData(responseData)
+        return responseData;
       } catch (error) {
         console.error(error);
       }
@@ -140,7 +141,7 @@ export default function HomeLayoutPage(){
                 >
                   
             {
-               data.results?.slice(0, 10)?.map((item: IFeaturedMovie)=>(
+               data?.slice(0, 10)?.map((item: IFeaturedMovie)=>(
                  <Grid
                       height="100%"
                       key={item.id}

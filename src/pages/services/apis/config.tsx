@@ -12,8 +12,8 @@ export async function authenticate(): Promise<any> {
               Accept: "application/json",
             },
           });
-    console.log(response.data);
-    return response.data;
+    console.log(response.data.results);
+    return response.data.results;
   } catch (error: any) {
     const newError = error?.response?.data?.message || "Check your network";
     throw new Error(newError);
