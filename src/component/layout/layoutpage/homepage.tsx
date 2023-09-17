@@ -36,7 +36,7 @@ export default function HomeLayoutPage(){
         <>
         <Box sx={{ backgroundColor:"white"}}>
         <Box sx={{
-          background: `url(${Header.src})`,
+          backgroundImage: `url(${Header.src})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           height: "600px",
@@ -84,8 +84,6 @@ export default function HomeLayoutPage(){
                 // textAlign: "center",
               }}
             >
-
-              
              John Wick is on the run after killing a member of the
               international assassins' guild, and with a
               $14 million price tag on his head, he is the
