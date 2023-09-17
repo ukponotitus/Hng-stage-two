@@ -36,10 +36,10 @@ export default function HomeLayoutPage(){
         <>
         <Box sx={{ backgroundColor:"white"}}>
         <Box sx={{
-            background:`url(${Header.src})`,
-            backgroundRepeat:"no-repeat",
-            backgroundSize:"cover",
-            height: "600px",
+          background: `url(${Header.src})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "600px",
         }}>
             <Box>
         	<SearchAppBar />
